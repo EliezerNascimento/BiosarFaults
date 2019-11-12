@@ -85,7 +85,7 @@ def main():
 
     plant: str = ''
     bitText: str = ''
-    file_path: str = pathlib.Path(__file__).parent.__str__() + "//erors_faltas.xlsx"
+    file_path: str = pathlib.Path(__file__).parent.__str__() + "//erros_faltas.xlsx"
     
     print("\n**** Biosar Fault Translater****")
     print(" * by Eliezer Nascimento * ")
