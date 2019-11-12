@@ -26,6 +26,8 @@ def main(self) -> None:
         if f.is_notify_required():
             msg_txt = f.parse_message()
             notifier_aux.notify(msg_origin, msg_destination, msg_txt)
-            data_base_aux.save(f)
         pass
+
+        # Even though an item has not to be notified to some one, it's important to be persisted to database
+        data_base_aux.save(f)
     pass
