@@ -104,12 +104,12 @@ def main():
     
     inv_all = input("Cole o título do inversor aqui: ")
     inv_all = str.lower(inv_all)
-    if (inv_all.startswith("p",9,10) == True):
+    if (inv_all.startswith("p",8,9) == True):
         plant = 'Pirapora'
         inverter = ' '.join(inv_all.split()[1:2])
         inverter = inverter.replace('-inverter', '')#COMO COLOCAR ISSO DENTRO DE UM DEF() E FAZER COM QUE AS VARIÁVEIS SEJAM GLOBAIS?
         inverter = str.upper(inverter)
-    elif (inv_all.startswith("gui",9,12) == True):
+    elif (inv_all.startswith("gui",8,11) == True):
         plant = 'GUI'
         inverter = ' '.join(inv_all.split()[1:2])
         inverter = inverter.replace('-inverter', '')#COMO COLOCAR ISSO DENTRO DE UM DEF() E FAZER COM QUE AS VARIÁVEIS SEJAM GLOBAIS?
