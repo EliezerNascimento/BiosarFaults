@@ -79,58 +79,49 @@ def bit(y):
           return main()
 
 def main():
-    ## ARGS ORDERING
-    #1 - Plant ID
-    #2 - Bit
-
-    plant: str = ''
-    bitText: str = ''
+    
     file_path: str = pathlib.Path(__file__).parent.__str__() + "//erros_faltas.xlsx"
     
     print("\n**** Biosar Fault Translater****")
     print(" * by Eliezer Nascimento * ")
 
-    if len(sys.argv) > 0:
-        plant = sys.argv[1]
-        bitText = sys.argv[2]
+    ## Pedir para o usuário digitar algo e, ai sim, executar a lógia de obtenção da mensagem relacionada à falta
+    print("\n N - Não iniciou \n P - Parou")
+    stat = input("A planta não iniciou ou parou? ")
+    stat = str.lower(stat)
+    if (stat == "n"):
+        stat = "Não iniciou"
+    elif (stat == "p"):
+        stat = "Parou"
     else:
-        ## Pedir para o usuário digitar algo e, ai sim, executar a lógia de obtenção da mensagem relacionada à falta
-        print("\n N - Não iniciou \n P - Parou")
-        stat = input("A planta não iniciou ou parou? ")
-        stat = str.lower(stat)
-        if (stat == "n"):
-            stat = "Não iniciou"
-        elif (stat == "p"):
-            stat = "Parou"
-        else:
-            print("Vamos lá! Nos deixe saber se planta não iniciou ou parou.")
-            # sleep for 2 seconds after printing output 
-            sleep(2)
-            # call clear function 
-            clear()
-            # Restart process
-            return main()
-            
-        inv_all = input("Cole o título do inversor aqui: ")
-        inv_all = str.lower(inv_all)
-        if (inv_all.startswith("p",9,10) == True):
-            plant = 'Pirapora'
-            inverter = ' '.join(inv_all.split()[1:2])
-            inverter = inverter.replace('-inverter', '')#COMO COLOCAR ISSO DENTRO DE UM DEF() E FAZER COM QUE AS VARIÁVEIS SEJAM GLOBAIS?
-            inverter = str.upper(inverter)
-        elif (inv_all.startswith("gui",9,12) == True):
-            plant = 'GUI'
-            inverter = ' '.join(inv_all.split()[1:2])
-            inverter = inverter.replace('-inverter', '')#COMO COLOCAR ISSO DENTRO DE UM DEF() E FAZER COM QUE AS VARIÁVEIS SEJAM GLOBAIS?
-            inverter = str.upper(inverter)
-        else:
-            print('Você não digitou uma planta válida!')
-            # sleep for 2 seconds after printing output 
-            sleep(2)
-            # call clear function 
-            clear()
-            # Restart process
-            return main()
+        print("Vamos lá! Nos deixe saber se planta não iniciou ou parou.")
+        # sleep for 2 seconds after printing output 
+        sleep(2)
+        # call clear function 
+        clear()
+        # Restart process
+        return main()
+    
+    inv_all = input("Cole o título do inversor aqui: ")
+    inv_all = str.lower(inv_all)
+    if (inv_all.startswith("p",9,10) == True):
+        plant = 'Pirapora'
+        inverter = ' '.join(inv_all.split()[1:2])
+        inverter = inverter.replace('-inverter', '')#COMO COLOCAR ISSO DENTRO DE UM DEF() E FAZER COM QUE AS VARIÁVEIS SEJAM GLOBAIS?
+        inverter = str.upper(inverter)
+    elif (inv_all.startswith("gui",9,12) == True):
+        plant = 'GUI'
+        inverter = ' '.join(inv_all.split()[1:2])
+        inverter = inverter.replace('-inverter', '')#COMO COLOCAR ISSO DENTRO DE UM DEF() E FAZER COM QUE AS VARIÁVEIS SEJAM GLOBAIS?
+        inverter = str.upper(inverter)
+    else:
+        print('Você não digitou uma planta válida!')
+        # sleep for 2 seconds after printing output 
+        sleep(2)
+        # call clear function 
+        clear()
+        # Restart process
+        return main()
 
     if (plant == "p" or plant == "g"):
 
