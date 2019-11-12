@@ -1,0 +1,13 @@
+## stringstoTest
+
+Título do inversor
+# Inverter P06-INV-6-1-Inverter error log 2
+# Inverter GUI1-INV-13-01-Inverter error log 1
+
+Texto completo
+# Fault1 register:0000000000000100
+
+## to print Occurrence
+12/11/2019 - Inverter P06-INV-2-4 parou ()
+Feedback AC circuit breaker
+Occurrence time: 

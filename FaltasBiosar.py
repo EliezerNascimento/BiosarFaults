@@ -3,6 +3,7 @@
 import sys
 import pathlib
 import numpy as np
+from datetime import datetime
 # import only system from os 
 from os import system, name 
 # import sleep to show output for some time period 
@@ -78,6 +79,12 @@ def bit(y):
           # Restart process
           return main()
 
+dateTimeObj = datetime.now()
+dateObj = dateTimeObj.date()
+
+# Converting datetime object to string
+dateObjStr = dateTimeObj.strftime("%d-%m-%Y")
+
 def main():
     ## ARGS ORDERING
     #1 - Plant ID
@@ -90,18 +97,20 @@ def main():
     print("\n**** Biosar Fault Translater****")
     print(" * by Eliezer Nascimento * ")
 
-    if len(sys.argv) > 0:
+    if len(sys.argv) > 1:
         plant = sys.argv[1]
         bitText = sys.argv[2]
     else:
         ## Pedir para o usuário digitar algo e, ai sim, executar a lógia de obtenção da mensagem relacionada à falta
         print("\n N - Não iniciou \n P - Parou")
-        stat = input("A planta não iniciou ou parou? ")
+        stat = input("O equipamento Não iniciou ou Parou? ")
         stat = str.lower(stat)
         if (stat == "n"):
             stat = "Não iniciou"
+            stat2 = "Did not started in the morning"
         elif (stat == "p"):
             stat = "Parou"
+            stat2 = "Stopped"
         else:
             print("Vamos lá! Nos deixe saber se planta não iniciou ou parou.")
             # sleep for 2 seconds after printing output 
@@ -132,7 +141,7 @@ def main():
             # Restart process
             return main()
 
-    if (plant == "p" or plant == "g"):
+    if (plant == "Pirapora" or plant == "GUI"):
 
         bitText = input("Cole aqui o texto completo: ")
         bitText = str(bitText)
@@ -150,12 +159,14 @@ def main():
             result_query: DataFrame = df_aux.query(q)
 
             if (plant == "Pirapora"):
-                print(" Inverter", inverter, stat, " \n", result_query.Mensagem.to_string(index=False)) #Printing fault Message
+                print("\n", inverter, stat,"\n",result_query.Mensagem.to_string(index=False)) #Printing fault Message
+                print("\n", dateObjStr, "-", "Inverter", inverter, stat2,"\n",result_query.Mensagem.to_string(index=False), "\n", "Occurrence time: ") #Printing occurrence Message
             elif (plant == "GUI"):
-                print(" Inverter", inverter, stat, " \n", result_query.Mensagem.to_string(index=False)) #Printing fault Message
+                print("\n", inverter, stat,"\n",result_query.Mensagem.to_string(index=False)) #Printing fault Message
+                print("\n", dateObjStr, "-", "Inverter", inverter, stat2,"\n",result_query.Mensagem.to_string(index=False), "\n", "Occurrence time: ") #Printing occurrence Message
             else:
                 print("Não foi possível identificar o nome da falta.\n Tente novamente por favor. \n Obrigado!")
-            sleep(10)
+            sleep(5)
             return main()
         else:
             print("O texto inserido não é válido!")
